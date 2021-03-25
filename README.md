@@ -1,5 +1,5 @@
-# How to Integrate YieldX Embedded Products
-Use YieldX embedded products to connect to your users with fixed income portfolio contruction and analysis tools.
+# How to Embed YieldX  Products
+Embed YieldX products on your website to connect your users to fixed income portfolio contruction and analysis tools.
 
 ## OVERVIEW
 
@@ -34,18 +34,18 @@ POST https://auth.yieldx.app/oauth/token
 **OAuth Response:**
 ```json
 {
-    "access_token": "Your access token",
+    "access_token": "<<ACCESS_TOKEN>>",
     "scope": "institution",
     "expires_in": 86400,
     "token_type": "Bearer"
 }
 ```
-Access tokens are valid for 24 hours. You should set up your systems to automatically update access tokens before they expire to maintain uninterrupted service. In the coding examples section we provide an example backend solution for token management.
+Access tokens are valid for 24 hours. You should set up your systems to automatically update access tokens before they expire to maintain uninterrupted service. In the [coding examples](#coding-examples) section we provide an example backend solution for token management.
 
-Place the access token in the Authorization header of the API call as a Bearer token. Additionally, you will need to place the institutionId in the API URL where it says `institutionId`.
+When calling YieldX APIs place the `accessToken` in the Authorization header of the API as a Bearer token. Additionally, you will need to place the `institutionId` in the API URL where it says `institutionId`.
 
 ### Generating Sessions
-With your institution access token in hand you can now generate sessions. Create a server-side API that your website calls when a user clicks to open an embedded product. This API should call our [Generate Session](https://docs.yieldx.app/docs/service.html?service=auth#operation/GenerateSession) endpoint. Your API should return to the website the `sessionId` and session `accessToken`. Load the `sessionId` and `accessToken` into the embedded product configuration object and then call `openYieldXApp(config)`. See the [client-side integration](#client-side-integration) section for more details. 
+With your institution access token in hand you can now generate sessions. Create a server-side API that your website calls when a user clicks to open an embedded product. This API should call our [Generate Session](https://docs.yieldx.app/docs/service.html?service=auth#operation/GenerateSession) API. Your API should return to the website the `sessionId` and session `accessToken`. Load the `sessionId` and `accessToken` into the embedded product configuration object and then call `openYieldXApp(config)`. See the [client-side integration](#client-side-integration) section for more details. 
 
 IMPORTANT NOTES:
 1. Keep you `clientSecret` in a safe place and do not share or expose it. If is does get exposed please reach out to us and we will generate a new secret.
@@ -70,13 +70,13 @@ When a flow completes we provide the results to you via a webhook. You will need
     ]
 }
 
-The product enum values: "INPAAS", "BEST-FIT", and "ASSET-EXPLORER".
+The product enum values are: "INPAAS", "BEST-FIT", and "ASSET-EXPLORER".
 ```
-When your API is ready please to recieve this data please reach out and we will configure your endpoint on our end.
+When your API is ready to recieve this data please reach out and we will configure your endpoint on our end.
 
 
 ## CLIENT SIDE INTEGRATION
-You can incorporate YieldX embedded products on your website by either installing our package or using a script tag.
+You can embed YieldX products on your website by either installing our package or using a script tag.
 
 ### Installing the YieldX Package
 You can use yarn or npm to install our package.
@@ -123,12 +123,12 @@ const onButtonClick = async () => {
 
 }
 
-app enum values
+The app enum values are: "inpaas", "best-fit", and "asset-explorer"
 ```
 ### Adding themes
-The theme property is optional. If no theme is provided the default theme will be used.
+The theme property is optional. It allows you to customize colors to match your website. If no theme is provided the default theme will be used.
 Please provide RGBA values so we can properly sanitize the values.
-Please see the below for an illustration of how these colors are applied.
+Please see below an illustration of how these colors are applied.
 
 <img width="1585" alt="theme" src="https://user-images.githubusercontent.com/49527030/112526237-5a3c9600-8d67-11eb-8ee5-28df206e4aa3.png">
 
