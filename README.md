@@ -1,9 +1,10 @@
 # How to Embed YieldX  Products
-Embed YieldX products on your website to connect your users to fixed income portfolio contruction and analysis tools.
+
+Embed YieldX products on your website to connect your users to modern fixed income portfolio contruction and analysis tools.
 
 ## OVERVIEW
 
-Embedded Products are client-side components embedded in your website that your users interact with in order contruction and analize fixed income portfolios.
+Embedded Products are client-side components embedded in your website that your users interact with in order to build and analyze fixed income portfolios.
 
 With the click of a button on your website your users can start a flow.
 
@@ -69,9 +70,10 @@ When a flow completes we provide the results to you via a webhook. You will need
         }
     ]
 }
+```
 
 The product enum values are: "INPAAS", "BEST-FIT", and "ASSET-EXPLORER".
-```
+
 When your API is ready to recieve this data please reach out and we will configure your endpoint on our end.
 
 
@@ -122,9 +124,9 @@ const onButtonClick = async () => {
     openYieldXApp(config)
 
 }
-
-The app enum values are: "inpaas", "best-fit", and "asset-explorer"
 ```
+The app enum values are: "inpaas", "best-fit", and "asset-explorer"
+
 ### Adding themes
 The theme property is optional. It allows you to customize colors to match your website. If no theme is provided the default theme will be used.
 Please provide RGBA values so we can properly sanitize the values.
