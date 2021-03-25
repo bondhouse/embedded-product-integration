@@ -239,4 +239,6 @@ const runAuth = async () => {
 runAuth()
 ```
 
+## ASSISTANCE
+If you need assitance please reach out to api-support@yieldx.app.
 
