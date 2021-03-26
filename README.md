@@ -1,3 +1,4 @@
+
 # How to Embed YieldX  Products
 
 Embed YieldX products on your website to connect your users to modern fixed income portfolio contruction and analysis tools.
@@ -9,6 +10,8 @@ Embedded Products are client-side components embedded in your website that your 
 With the click of a button on your website your users can start a flow.
 
 ## FLOW
+
+<img width="789" alt="Embed YieldX Flow" src="https://user-images.githubusercontent.com/3128896/112641935-717f9000-8e08-11eb-8335-748f20dfacfd.png">
 
 The flow begins when your user clicks to use an embedded product.
 1. Your server makes a request to generate a session. The session will include a `sessionId` and user `accessToken`. See the [server-side integration](#server-side-integration) section for more details.
