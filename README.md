@@ -1,7 +1,7 @@
 
 # How to Embed YieldX  Products
 
-Embed YieldX products on your website to connect your users to modern fixed income portfolio contruction and analysis tools.
+Embed YieldX products on your website to connect your users to modern fixed income portfolio construction and analysis tools.
 
 ## OVERVIEW
 
