@@ -21,7 +21,7 @@ The flow begins when your user clicks to use an embedded product.
 ## SERVER SIDE INTEGRATION
 
 ### Authentication
-When your institution is onboarded you will be proided an `institutionId`, `clientId`, and `clientSecret`.
+When your institution is onboarded you will be provided an `institutionId`, `clientId`, and `clientSecret`.
 
 To access our APIs, you will need a valid JSON Web Token (JWT). You can retrieve an `accessToken` with your `clientId` and `clientSecret` by calling our OAuth endpoint.
 
@@ -52,7 +52,7 @@ When calling YieldX APIs place the `accessToken` in the Authorization header of 
 With your institution `accessToken` in hand you can now generate sessions. Create a server-side API that your website calls when a user clicks to open an embedded product. This API should call our [Generate Session](https://docs.yieldx.app/service.html?service=auth#operation/GenerateSession) API. Your API should return to the website the `sessionId` and session `accessToken`. Load the `sessionId` and `accessToken` into the embedded product configuration object and then call `openYieldXApp(config)`. See the [client-side integration](#client-side-integration) section for more details. 
 
 IMPORTANT NOTES:
-1. Keep you `clientSecret` in a safe place and do not share or expose it. If is does get exposed please reach out to us and we will generate a new secret.
+1. Keep your `clientSecret` in a safe place and do not share or expose it. If is does get exposed please reach out to us and we will generate a new secret.
 2. Do not expose your institution `accessToken` to the client-side. This should only be used on the server-side.
 3. The session `accessToken` is meant to be shared on the client-side.
 
