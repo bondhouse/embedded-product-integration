@@ -78,6 +78,8 @@ When a flow completes we provide the results to you via a webhook. You will need
 The product enum values are: "INPAAS", "BEST-FIT", and "ASSET-EXPLORER".
 
 When your API is ready to recieve this data please reach out and we will configure your endpoint on our end.
+Note that we will not be able to authenticate with your servers, therefore we will provide a static IP address that you can whitelist 
+to only allow traffic between our servers and your servers. We will provide the static IP address when you provide the endpoint.
 
 
 ## CLIENT SIDE INTEGRATION
