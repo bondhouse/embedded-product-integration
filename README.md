@@ -124,7 +124,7 @@ You can retrieve the JavaScript file from our CDN.
 <script src="https://dp16xhm4dg09a.cloudfront.net/embed.umd.js"></script>
 ```
 ### Configuring and opening the app
-```jsx
+```html
 <html>
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"></script>
@@ -135,32 +135,33 @@ You can retrieve the JavaScript file from our CDN.
     <iframe id="root"></iframe>
     <script>
 
-      /* Call your servers to generate a session */
-      const server_side_api = https://your-domain.com/apis/generate-yieldx-session
-      
-      axios.get(server_side_api).then((session) => {
+        /* Call your servers to generate a session */
+        const server_side_api = https://your-domain.com/apis/generate-yieldx-session
 
-        const token = session.data.accessToken
-        const sessionId = session.data.sessionId
+        axios.get(server_side_api).then((session) => {
 
-        /* Config YieldX object */
-        const config = {
-            "app": "inpaas",
-            "container": "root",
-            "token": token,
-            "sessionId": sessionId,
-            "onCompleted": () => alert("User session completed successfully"),
-            "onError": () => alert("Please refresh the session and try again"),
-            "theme": {
-                "primary": "rgba(0,0,0,0)",
-                "secondary": "rgba(0,0,0,0)",
-                "foreground": "rgba(0,0,0,0)",
-                "textPrimary": "rgba(0,0,0,0)",
-                "textSecondary": "rgba(0,0,0,0)",
+            const token = session.data.accessToken
+            const sessionId = session.data.sessionId
+
+            /* Config YieldX object */
+            const config = {
+                "app": "inpaas",
+                "container": "root",
+                "token": token,
+                "sessionId": sessionId,
+                "onCompleted": () => alert("User session completed successfully."),
+                "onError": () => alert("Please refresh the session and try again."),
+                "theme": {
+                    "primary": "rgba(0,0,0,0)",
+                    "secondary": "rgba(0,0,0,0)",
+                    "foreground": "rgba(0,0,0,0)",
+                    "textPrimary": "rgba(0,0,0,0)",
+                    "textSecondary": "rgba(0,0,0,0)",
+                }
             }
-        }
-        /* Open YieldX App */
-        Embed.openYieldxEmbed(config);
+        
+            /* Open YieldX App */
+            Embed.openYieldxEmbed(config);
       })
     </script>
 </body>
