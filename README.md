@@ -101,8 +101,15 @@ to only allow traffic between our servers and your servers. We will provide the 
 ## CLIENT SIDE INTEGRATION
 You can embed YieldX products on your website by either installing our package or using a script tag.
 
+#### Dependencies
+
+- qs: [github](https://github.com/ljharb/qs) [npm](https://www.npmjs.com/package/qs)
+- postmate: [github](https://github.com/dollarshaveclub/postmate) [npm](https://www.npmjs.com/package/postmate)
+
 ### Installing the YieldX Package
 You can use yarn or npm to install our package.
+[@yieldx/embed](https://www.npmjs.com/package/@yieldx/embed)
+
 ```sh
 yarn add @yieldx/embed
 npm install @yieldx/embed
@@ -114,37 +121,50 @@ import { openYieldXApp } from '@yieldx/embed'
 ### Using a script tag
 You can retrieve the JavaScript file from our CDN.
 ```html
-<script src="https://dp16xhm4dg09a.cloudfront.net/embed.esm.js"></script>
+<script src="https://dp16xhm4dg09a.cloudfront.net/embed.umd.js"></script>
 ```
 ### Configuring and opening the app
 ```jsx
-const onButtonClick = async () => { 
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.1/qs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/postmate@1.5.2/build/postmate.min.js"></script>
+    <script src="https://dp16xhm4dg09a.cloudfront.net/embed.umd.js"></script>
+</head>
+<body>
+    <iframe id="root"></iframe>
+    <script>
 
-    /* Call your servers to generate a session */
-    const server_side_api = https://your-domain.com/apis/generate-yieldx-session
-    const session = await axios.get(server_side_api)
-    const accessToken = session.data.accessToken
-    const sessionId = session.data.sessionId
+      /* Call your servers to generate a session */
+      const server_side_api = https://your-domain.com/apis/generate-yieldx-session
+      
+      axios.get(server_side_api).then((session) => {
 
-    /* Config YieldX object */
-    const config = {
-        "app": "inpaas",
-        "container": "root",
-        "access_token": accessToken,
-        "session_id": sessionId,
-        "theme": {
-            "primary": "rgba(0,0,0,0)",
-            "secondary": "rgba(0,0,0,0)",
-            "foreground": "rgba(0,0,0,0)",
-            "textPrimary": "rgba(0,0,0,0)",
-            "textSecondary": "rgba(0,0,0,0)",
+        const token = session.data.accessToken
+        const sessionId = session.data.sessionId
+
+        /* Config YieldX object */
+        const config = {
+            "app": "inpaas",
+            "container": "root",
+            "token": token,
+            "sessionId": sessionId,
+            "onCompleted": () => alert("User session completed successfully"),
+            "onError": () => alert("Please refresh the session and try again"),
+            "theme": {
+                "primary": "rgba(0,0,0,0)",
+                "secondary": "rgba(0,0,0,0)",
+                "foreground": "rgba(0,0,0,0)",
+                "textPrimary": "rgba(0,0,0,0)",
+                "textSecondary": "rgba(0,0,0,0)",
+            }
         }
-    }
-
-    /* Open YieldX App */
-    openYieldXApp(config)
-
-}
+        /* Open YieldX App */
+        Embed.openYieldxEmbed(config);
+      })
+    </script>
+</body>
+</html>
 ```
 The app enum values are: "inpaas", "best-fit", and "asset-explorer"
 
