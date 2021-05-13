@@ -61,21 +61,35 @@ When a flow completes we provide the results to you via a webhook. You will need
 ```json
 {
     "sessionId": "string",
-    "product": "INPAAS",
+    "institutionId": "string",
     "positions": [
-        {
-            "quantity": 10.0,
-            "publicIdentifiers": {
-                "cusip": "string",
-                "isin": "string",
-                "ticker": "string",
-            }
-        }
-    ]
+      {
+        "quantity": 10.0,
+        "closePrice": 10.0,
+        "publicIdentifier": "TICKER",
+        "publicIdentifierValue": "BND"
+      },
+      {
+        "quantity": 10.0,
+        "closePrice": 10.0,
+        "publicIdentifier": "CUSIP",
+        "publicIdentifierValue": "037833DT4"
+      },
+      {
+        "quantity": 10.0,
+        "closePrice": 10.0,
+        "publicIdentifier": "CURRENCY",
+        "publicIdentifierValue": "USD"
+      },
+    ],
+    "product": "INPAAS",
+    "sentAt": "2019-08-24T14:15:22Z",
+    "userId": "string",
 }
 ```
+The product enum values are: `INPAAS`, `BEST-FIT`, and `ASSET-EXPLORER`.
 
-The product enum values are: "INPAAS", "BEST-FIT", and "ASSET-EXPLORER".
+For funds the `publicIdentifier` will be a `TICKER`, for bonds a `CUSIP`, and for cash a `CURRENCY`.
 
 When your API is ready to recieve this data please reach out and we will configure your endpoint on our end.
 Note that we will not be able to authenticate with your servers, therefore we will provide a static IP address that you can whitelist 
