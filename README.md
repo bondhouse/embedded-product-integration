@@ -90,6 +90,7 @@ When a flow completes we provide the results to you via a webhook. You will need
 The product enum values are: `INPAAS`, `BEST-FIT`, and `ASSET-EXPLORER`.
 
 The `publicIdentifier` for funds will be `TICKER`, for bonds `CUSIP`, and for cash `CURRENCY`.
+
 `INPAAS` will only have `TICKER` and `CURRENCY`; `BEST-FIT` only `CUSIP` and `CURRENCY`; `ASSET-EXPLORER` can have any. 
 
 When your API is ready to recieve this data please reach out and we will configure your endpoint on our end.
